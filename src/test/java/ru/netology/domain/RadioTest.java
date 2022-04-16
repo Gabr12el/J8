@@ -35,10 +35,32 @@ class RadioTest {
     }
 
     @Test
-    void stationInput() {//задать № станции
+    void stationInput() {//задать № станции (1-9)
         Radio rad = new Radio();
         int currentStation = 5;
         int expected = 5;
+        rad.stationInput(currentStation);//обращение к stationInput
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
+    void stationInput2() {//задать № станции (1-9)
+        Radio rad = new Radio();
+        int currentStation = -1;
+        int expected = 0;
+        rad.stationInput(currentStation);//обращение к stationInput
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
+    void stationInput3() {//задать № станции (1-9)
+        Radio rad = new Radio();
+        int currentStation = 10;
+        int expected = 0;
         rad.stationInput(currentStation);//обращение к stationInput
         int actual = rad.getCurrentStation();
         assertEquals(expected, actual);
@@ -54,6 +76,7 @@ class RadioTest {
         assertEquals(expected, actual);
         //System.out.println(actual);// покажи актуальную
     }
+
     @Test
     void stationVolumePlus() {// если громкость 10+1=10
         Radio rad = new Radio();
@@ -64,6 +87,7 @@ class RadioTest {
         assertEquals(expected, actual);
         //System.out.println(actual);// покажи актуальную
     }
+
     @Test
     void stationVolumeMinus() {// если громкость 10+1=10
         Radio rad = new Radio();
