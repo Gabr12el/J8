@@ -5,17 +5,47 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+    //    @Test
+//    void station1() {// покажи актуальную станцию
+//        Radio rad = new Radio();
+//        int actual = rad.getCurrentStation();
+//        System.out.println(actual);
+//    }
     @Test
-    void station1() {// покажи актуальную станцию
+    void stationLimMin() {// если станция 1-1=0
         Radio rad = new Radio();
+        rad.setCurrentStation(-1);
+        int expected = 0;
         int actual = rad.getCurrentStation();
-        System.out.println(actual);
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
     }
 
     @Test
-    void stationMax() {// если станция 9+1=0
+    void stationLimMax() {// если станция 9+1=0
         Radio rad = new Radio();
         rad.setCurrentStation(10);
+        int expected = 0;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
+    void stationMax() {// если станция 1-1=0
+        Radio rad = new Radio();
+        rad.setCurrentStation(1);
+        rad.next();//обращение к next
+        int expected = 2;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
+    void stationMax2() {// если станция 9+1=0
+        Radio rad = new Radio();
+        rad.setCurrentStation(9);
         rad.next();//обращение к next
         int expected = 0;
         int actual = rad.getCurrentStation();
@@ -29,6 +59,17 @@ class RadioTest {
         rad.setCurrentStation(0);
         rad.prev();//обращение к prev
         int expected = 9;
+        int actual = rad.getCurrentStation();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
+    void stationMin2() {// если станция 0+9=8
+        Radio rad = new Radio();
+        rad.setCurrentStation(9);
+        rad.prev();//обращение к prev
+        int expected = 8;
         int actual = rad.getCurrentStation();
         assertEquals(expected, actual);
         //System.out.println(actual);// покажи актуальную
@@ -89,11 +130,33 @@ class RadioTest {
     }
 
     @Test
+    void stationVolumePlus2() {// если громкость 1+1=2
+        Radio rad = new Radio();
+        rad.setCurrentVolume(1);
+        rad.volumePlus();//обращение к volumePlus
+        int expected = 2;
+        int actual = rad.getCurrentVolume();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
     void stationVolumeMinus() {// если громкость 10+1=10
         Radio rad = new Radio();
         rad.setCurrentVolume(-1);
         rad.volumeMinus();//обращение к volumeMinus
         int expected = 0;
+        int actual = rad.getCurrentVolume();
+        assertEquals(expected, actual);
+        //System.out.println(actual);// покажи актуальную
+    }
+
+    @Test
+    void stationVolumeMinus2() {// если громкость 0+9=8
+        Radio rad = new Radio();
+        rad.setCurrentVolume(9);
+        rad.volumeMinus();//обращение к volumeMinus
+        int expected = 8;
         int actual = rad.getCurrentVolume();
         assertEquals(expected, actual);
         //System.out.println(actual);// покажи актуальную

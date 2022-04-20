@@ -8,7 +8,13 @@ public class Radio {
         return currentStation;
     }
 
-    public void setCurrentStation(int currentStation) {//установить текущую станцию
+    public void setCurrentStation(int currentStation) {//установить текущую станцию Тута
+        if (currentStation < 0) {//меньше минимума
+            return;
+        }
+        if (currentStation > 9) {//больше максимума
+            return;
+        }
         this.currentStation = currentStation;
     }
 
